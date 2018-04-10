@@ -1,0 +1,11 @@
+type=graphNode name=Waterford
+type=graphNode name=Limerick
+type=graphNode name=Cork
+type=graphNode name=Wexford
+type=graphNode name=Carlow
+type=graphNode name=Dublin
+type=graphLink sourceNode=Waterford destNode=Limerick cost=45
+type=graphLink sourceNode=Waterford destNode=Cork cost=90
+type=graphLink sourceNode=Cork destNode=Carlow cost=30
+type=graphLink sourceNode=Dublin destNode=Wexford cost=49
+type=graphLink sourceNode=Carlow destNode=Limerick cost58

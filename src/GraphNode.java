@@ -27,8 +27,8 @@ public class GraphNode {
         this.setName(name);
     }
 
-    public void connectToNodeUndirected(GraphNode destNode, int cost) {
-        adjList.add( new GraphLink(destNode,cost) ); //Add new link object to source adjacency list
-        destNode.adjList.add( new GraphLink(this,cost) ); //Add new link object to destination adjacency list
+    public void connectToNodeUndirected(GraphNode sourceNode, GraphNode destNode, int cost) {
+        adjList.add( new GraphLink(sourceNode, destNode,cost) ); //Add new link object to source adjacency list
+        destNode.adjList.add( new GraphLink(destNode, sourceNode, cost) ); //Add new link object to destination adjacency list
     }
 }
