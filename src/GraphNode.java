@@ -4,15 +4,14 @@ import java.util.List;
 public class GraphNode {
 
     private String name;
-    private List<GraphLink> adjList=new ArrayList<>(); //Adjacency list now contains link objects = key!
-    //Could use any concrete List implementation
+    private List<GraphLink> graphLinkList=new ArrayList<>();
 
-    public List<GraphLink> getAdjList() {
-        return adjList;
+    public List<GraphLink> getGraphLinkList() {
+        return graphLinkList;
     }
 
-    private void setAdjList(List<GraphLink> adjList) {
-        this.adjList = adjList;
+    private void setGraphLinkList(List<GraphLink> graphLinkList) {
+        this.graphLinkList = graphLinkList;
     }
 
     public String getName() {
@@ -28,7 +27,7 @@ public class GraphNode {
     }
 
     public void connectToNodeUndirected(GraphNode sourceNode, GraphNode destNode, int cost) {
-        adjList.add( new GraphLink(sourceNode, destNode,cost) ); //Add new link object to source adjacency list
-        destNode.adjList.add( new GraphLink(destNode, sourceNode, cost) ); //Add new link object to destination adjacency list
+        graphLinkList.add( new GraphLink(sourceNode, destNode,cost) ); //Add new link object to source adjacency list
+        destNode.graphLinkList.add( new GraphLink(destNode, sourceNode, cost) ); //Add new link object to destination adjacency list
     }
 }
