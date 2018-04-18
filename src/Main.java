@@ -1,7 +1,7 @@
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -12,13 +12,29 @@ import java.util.Scanner;
 public class Main extends Application {
 
     private static ArrayList<GraphNode> graphNodes = new ArrayList<>();
+    static Stage ps;
+    static AnchorPane startScreen;
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
+    public void start(Stage stage) throws Exception {
+        try {
+            ps = stage;
+            startScreen = FXMLLoader.load(getClass().getResource("startScreen.fxml"));
+
+            ps.setScene(new Scene(startScreen, 1000, 600));
+            ps.setTitle("Welcome to MoogleGaps!");
+            ps.show();
+            System.out.println("I got here");
+            ps.setOnCloseRequest(e -> {
+                try {
+                    closeProgramme();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) throws FileNotFoundException {
@@ -27,9 +43,9 @@ public class Main extends Application {
         input.useDelimiter("\r\n");
 
         while (input.hasNextLine()) {
-            if (input.findInLine("graphNode").equals("graphNode")) {
-                String n = input.nextLine();
-                String[] splitNodeStrings = n.split(" ");
+            String in= input.nextLine();
+            if (in.contains("graphNode")) {
+                String[] splitNodeStrings = in.split(" ");
                 String name = splitNodeStrings[2];
 
                 GraphNode graphNode = new GraphNode(name);
@@ -39,25 +55,24 @@ public class Main extends Application {
                 } else {
                     System.out.println("Error, City already Exists!");
                 }
-            } else if (input.findInLine("graphLink").equals("graphLink")) {
+            } else if (in.contains("graphLink")) {
                 Boolean sourceNodeExists = false;
                 Boolean destNodeExists = false;
-                String l = input.nextLine();
-                String[] splitLinkStrings = l.split(" ");
-                String sourceNode = splitLinkStrings[3];
-                String destNode = splitLinkStrings[5];
-                int cost = Integer.parseInt(splitLinkStrings[7]);
+                String[] splitLinkStrings = in.split(" ");
+                String sourceNode = splitLinkStrings[2];
+                String destNode = splitLinkStrings[4];
+                int cost = Integer.parseInt(splitLinkStrings[6]);
                 GraphNode realSourceNode = null;
                 GraphNode realDestNode = null;
 
-                for (int i = 0; i < graphNodes.size(); i++) {
-                    if ((graphNodes.get(i).getName().equals(sourceNode)) && (!sourceNodeExists)) {
+                for (GraphNode graphNode : graphNodes) {
+                    if ((graphNode.getName().equals(sourceNode)) && (!sourceNodeExists)) {
                         sourceNodeExists = true;
-                        realSourceNode = graphNodes.get(i);
+                        realSourceNode = graphNode;
                     }
-                    if ((graphNodes.get(i).getName().equals(destNode)) && (!destNodeExists)) {
+                    if ((graphNode.getName().equals(destNode)) && (!destNodeExists)) {
                         destNodeExists = true;
-                        realDestNode = graphNodes.get(i);
+                        realDestNode = graphNode;
                     }
                 }
                 if (sourceNodeExists && destNodeExists) {
@@ -67,5 +82,10 @@ public class Main extends Application {
             }
         }
         launch(args);
+    }
+
+
+    private void closeProgramme() throws Exception{
+        ps.close();
     }
 }

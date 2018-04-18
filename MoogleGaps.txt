@@ -1,5 +1,6 @@
 graphNode name Waterford
 graphNode name Limerick
+graphNode name Limerick
 graphNode name Cork
 graphNode name Wexford
 graphNode name Carlow
