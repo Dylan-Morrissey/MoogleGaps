@@ -1,14 +1,15 @@
 public class GraphLink {
 
     private GraphNode sourceNode;
-    private GraphNode destNode; //Could also store source node if required
-    private int cost; //Other link attributes could be similarly stored
+    private GraphNode destNode;
+    private int cost;
+    private char roadType;
 
     public GraphNode getSourceNode() {
         return sourceNode;
     }
 
-    public void setSourceNode(GraphNode sourceNode) {
+    private void setSourceNode(GraphNode sourceNode) {
         this.sourceNode = sourceNode;
     }
 
@@ -16,7 +17,7 @@ public class GraphLink {
         return destNode;
     }
 
-    public void setDestNode(GraphNode destNode) {
+    private void setDestNode(GraphNode destNode) {
         this.destNode = destNode;
     }
 
@@ -24,13 +25,22 @@ public class GraphLink {
         return cost;
     }
 
-    public void setCost(int cost) {
+    private void setCost(int cost) {
         this.cost = cost;
     }
 
-    public GraphLink(GraphNode sourceNode, GraphNode destNode, int cost) {
+    public Character getRoadType() {
+        return roadType;
+    }
+
+    private void setRoadType(Character roadType) {
+        this.roadType = roadType;
+    }
+
+    public GraphLink(GraphNode sourceNode, GraphNode destNode, int cost, char roadType) {
         this.setSourceNode(sourceNode);
         this.setDestNode(destNode);
         this.setCost(cost);
+        this.setRoadType(roadType);
     }
 }

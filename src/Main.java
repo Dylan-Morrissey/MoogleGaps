@@ -11,7 +11,8 @@ import java.util.Scanner;
 
 public class Main extends Application {
 
-    private static ArrayList<GraphNode> graphNodes = new ArrayList<>();
+    static ArrayList<GraphNode> graphNodes = new ArrayList<>();
+    static ArrayList<String> graphNodeNames = new ArrayList<>();
     static Stage ps;
     static AnchorPane startScreen;
 
@@ -49,8 +50,9 @@ public class Main extends Application {
                 String name = splitNodeStrings[2];
 
                 GraphNode graphNode = new GraphNode(name);
-                if (!graphNodes.contains(graphNode.getName())) {
+                if (!graphNodeNames.contains(graphNode.getName())) {
                     graphNodes.add(graphNode);
+                    graphNodeNames.add(graphNode.getName());
                     System.out.println(graphNode.getName() + " added!");
                 } else {
                     System.out.println("Error, City already Exists!");
@@ -61,7 +63,8 @@ public class Main extends Application {
                 String[] splitLinkStrings = in.split(" ");
                 String sourceNode = splitLinkStrings[2];
                 String destNode = splitLinkStrings[4];
-                int cost = Integer.parseInt(splitLinkStrings[6]);
+                char roadType = splitLinkStrings[8].charAt(0);
+                int distance = Integer.parseInt(splitLinkStrings[6]);
                 GraphNode realSourceNode = null;
                 GraphNode realDestNode = null;
 
@@ -76,7 +79,12 @@ public class Main extends Application {
                     }
                 }
                 if (sourceNodeExists && destNodeExists) {
-                    GraphLink graphLink = new GraphLink(realSourceNode, realDestNode, cost);
+                    GraphLink graphLink = new GraphLink(realSourceNode, realDestNode, distance, roadType);
+                    for (GraphNode graphNode : graphNodes) {
+                        if (graphNode.getName().equals(realSourceNode.getName())) {
+                            realSourceNode.getGraphLinkList().add(graphLink);
+                        }
+                    }
                     System.out.println("Link from " + realSourceNode.getName() + " to " + realDestNode.getName() + " created!");
                 }
             }

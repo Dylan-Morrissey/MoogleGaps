@@ -5,8 +5,8 @@ graphNode name Cork
 graphNode name Wexford
 graphNode name Carlow
 graphNode name Dublin
-graphLink sourceNode Waterford destNode Limerick cost 45
-graphLink sourceNode Waterford destNode Cork cost 90
-graphLink sourceNode Cork destNode Carlow cost 30
-graphLink sourceNode Dublin destNode Wexford cost 49
-graphLink sourceNode Carlow destNode Limerick cost 58
+graphLink sourceNode Waterford destNode Limerick distance 45 roadType M
+graphLink sourceNode Waterford destNode Cork distance 90 roadType N
+graphLink sourceNode Cork destNode Carlow distance 30 roadType R
+graphLink sourceNode Dublin destNode Wexford distance 49 roadType N
+graphLink sourceNode Carlow destNode Limerick distance 58 roadType R

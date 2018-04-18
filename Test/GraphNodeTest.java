@@ -16,13 +16,13 @@ public class GraphNodeTest {
 
     @Before
     public void setUp() {
-        q.connectToNodeUndirected(q, w, 5);
-        w.connectToNodeUndirected(w, y, 20);
-        w.connectToNodeUndirected(w, e, 2);
-        e.connectToNodeUndirected(e, t, 7);
-        t.connectToNodeUndirected(t, r, 4);
-        t.connectToNodeUndirected(t, y, 7);
-        r.connectToNodeUndirected(r, y, 6);
+        q.connectToNodeUndirected(q, w, 5, 'M');
+        w.connectToNodeUndirected(w, y, 20, 'N');
+        w.connectToNodeUndirected(w, e, 2, 'R');
+        e.connectToNodeUndirected(e, t, 7, 'N');
+        t.connectToNodeUndirected(t, r, 4, 'R');
+        t.connectToNodeUndirected(t, y, 7, 'M');
+        r.connectToNodeUndirected(r, y, 6, 'R');
     }
 
     //Regular recursive depth-first graph traversal
