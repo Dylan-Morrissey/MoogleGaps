@@ -17,10 +17,10 @@ public class Main extends Application {
     static AnchorPane startScreen;
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         try {
             ps = stage;
-            startScreen = FXMLLoader.load(getClass().getResource("startScreen.fxml"));
+            startScreen = FXMLLoader.load(getClass().getResource("StartScreen.fxml"));
 
             ps.setScene(new Scene(startScreen, 1000, 600));
             ps.setTitle("Welcome to MoogleGaps!");
@@ -49,7 +49,7 @@ public class Main extends Application {
                 String[] splitNodeStrings = in.split(" ");
                 String name = splitNodeStrings[2];
 
-                GraphNode graphNode = new GraphNode(name);
+                GraphNode graphNode = new GraphNode(name );
                 if (!graphNodeNames.contains(graphNode.getName())) {
                     graphNodes.add(graphNode);
                     graphNodeNames.add(graphNode.getName());
@@ -93,7 +93,9 @@ public class Main extends Application {
     }
 
 
-    private void closeProgramme() throws Exception{
+
+
+    private void closeProgramme() {
         ps.close();
     }
 }
