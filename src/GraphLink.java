@@ -1,9 +1,9 @@
 public class GraphLink {
 
-    private GraphNode sourceNode;
-    private GraphNode destNode;
-    private int cost;
-    private char roadType;
+    public GraphNode sourceNode;
+    public GraphNode destNode;
+    public int cost;
+    public char roadType;
 
     public GraphNode getSourceNode() {
         return sourceNode;
