@@ -4,6 +4,7 @@
 <?import java.net.*?>
 <?import java.util.*?>
 <?import javafx.collections.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -63,11 +64,60 @@
             </HBox>
           </children>
         </VBox>
+        <VBox alignment="TOP_CENTER" prefHeight="179.0" prefWidth="427.0">
+          <children>
+            <Button id="goButton" fx:id="shortestRouteButton" mnemonicParsing="false" onAction="#findShortestRoute" styleClass="promptTextSize" text="Search By Shortest">
+              <stylesheets>
+                <URL value="@../background/style.css" />
+              </stylesheets>
+              <VBox.margin>
+                <Insets top="20.0" />
+              </VBox.margin>
+            </Button>
+            <Button id="quickestRoute" fx:id="quickestRouteButton" mnemonicParsing="false" onAction="#findQuickestRoute" styleClass="promptTextSize" text="Search By Quickest">
+              <stylesheets>
+                <URL value="@../background/style.css" />
+              </stylesheets>
+              <VBox.margin>
+                <Insets top="30.0" />
+              </VBox.margin>
+            </Button>
+          </children>
+        </VBox>
       </children>
     </HBox>
     <HBox layoutX="87.0" layoutY="240.0" prefHeight="346.0" prefWidth="840.0">
       <children>
-        <ListView fx:id="routeList" opacity="0.98" orientation="VERTICAL" prefHeight="333.0" prefWidth="326.0" styleClass="list-cell" />
+        <ListView fx:id="routeListView" prefHeight="346.0" prefWidth="290.0" styleClass="list-cell">
+          <stylesheets>
+            <URL value="@../background/style.css" />
+          </stylesheets>
+        </ListView>
+        <VBox alignment="CENTER" prefHeight="346.0" prefWidth="260.0" HBox.hgrow="ALWAYS">
+          <children>
+            <Label fx:id="distanceLabel" alignment="TOP_LEFT" prefWidth="526.0" text="Label" textFill="WHITE" visible="false">
+              <font>
+                <Font name="System Bold" size="22.0" fx:id="x2" />
+              </font>
+              <VBox.margin>
+                <Insets top="-26.0" />
+              </VBox.margin>
+            </Label>
+            <Label fx:id="timeLabel" alignment="TOP_LEFT" font="$x2" prefWidth="565.0" text="Label" textFill="WHITE" visible="false">
+              <VBox.margin>
+                <Insets top="15.0" />
+              </VBox.margin>
+            </Label>
+            <Label fx:id="avgSpeedLabel" alignment="TOP_LEFT" font="$x2" prefWidth="594.0" text="Label" textFill="WHITE" visible="false">
+              <VBox.margin>
+                <Insets top="20.0" />
+              </VBox.margin>
+            </Label>
+          </children>
+          <HBox.margin>
+            <Insets left="100.0" />
+          </HBox.margin>
+        </VBox>
       </children>
     </HBox>
   </children>

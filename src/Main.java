@@ -83,6 +83,7 @@ public class Main extends Application {
                     for (GraphNode graphNode : graphNodes) {
                         if (graphNode.getName().equals(realSourceNode.getName())) {
                             realSourceNode.getGraphLinkList().add(graphLink);
+                            graphNode.connectToNodeUndirected(realSourceNode, realDestNode, distance, roadType);
                         }
                     }
                     System.out.println("Link from " + realSourceNode.getName() + " to " + realDestNode.getName() + " created!");

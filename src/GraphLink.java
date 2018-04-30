@@ -2,7 +2,7 @@ public class GraphLink {
 
     public GraphNode sourceNode;
     public GraphNode destNode;
-    public int cost;
+    public int distance;
     public char roadType;
 
     public GraphNode getSourceNode() {
@@ -21,12 +21,12 @@ public class GraphLink {
         this.destNode = destNode;
     }
 
-    public int getCost() {
-        return cost;
+    public int getDistance() {
+        return distance;
     }
 
-    private void setCost(int cost) {
-        this.cost = cost;
+    private void setDistance(int distance) {
+        this.distance = distance;
     }
 
     public Character getRoadType() {
@@ -37,10 +37,10 @@ public class GraphLink {
         this.roadType = roadType;
     }
 
-    public GraphLink(GraphNode sourceNode, GraphNode destNode, int cost, char roadType) {
+    public GraphLink(GraphNode sourceNode, GraphNode destNode, int distance, char roadType) {
         this.setSourceNode(sourceNode);
         this.setDestNode(destNode);
-        this.setCost(cost);
+        this.setDistance(distance);
         this.setRoadType(roadType);
     }
 }

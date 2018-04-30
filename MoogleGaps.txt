@@ -1,12 +1,54 @@
 graphNode name Waterford
-graphNode name Limerick
-graphNode name Limerick
-graphNode name Cork
-graphNode name Wexford
+graphNode name Tramore
+graphNode name Kilkenny
+graphNode name Carriganore
+graphNode name Dunmore
+graphNode name Kilmeaden
+graphNode name CarrolsCross
+graphNode name Kilmacthomas
+graphNode name Dungarvan
+graphNode name Mooncoin
+graphNode name Fiddown
+graphNode name Crehana
+graphNode name Clonea
+graphNode name MahonBridge
+graphNode name Killarney
+graphNode name Lismore
+graphNode name Fermoy
+graphNode name Mallow
+graphNode name Rathmore
 graphNode name Carlow
-graphNode name Dublin
-graphLink sourceNode Waterford destNode Limerick distance 45 roadType M
-graphLink sourceNode Waterford destNode Cork distance 90 roadType N
-graphLink sourceNode Cork destNode Carlow distance 30 roadType R
-graphLink sourceNode Dublin destNode Wexford distance 49 roadType N
-graphLink sourceNode Carlow destNode Limerick distance 58 roadType R
+graphNode name Limerick
+graphNode name Urlingford
+graphNode name Cashel
+graphNode name Golden
+graphNode name Tipperary
+graphNode name Oola
+graphLink sourceNode Kilkenny destNode Urlingford distance 29 roadType R
+graphLink sourceNode Urlingford destNode Cashel distance 35 roadType M
+graphLink sourceNode Cashel destNode Golden distance 7 roadType N
+graphLink sourceNode Golden destNode Tipperary distance 13 roadType N
+graphLink sourceNode Tipperary destNode Oola distance 14 roadType N
+graphLink sourceNode Oola destNode Limerick distance 31 roadType N
+graphLink sourceNode Kilkenny destNode Carlow distance 38 roadType M
+graphLink sourceNode Dungarvan destNode Lismore distance 25 roadType N
+graphLink sourceNode Lismore destNode Fermoy distance 27 roadType N
+graphLink sourceNode Fermoy destNode Mallow distance 30 roadType N
+graphLink sourceNode Mallow destNode Rathmore distance 44 roadType N
+graphLink sourceNode Rathmore destNode Killarney distance 21 roadType N
+graphLink sourceNode Waterford destNode Kilmeaden distance 16 roadType N
+graphLink sourceNode Waterford destNode Kilmeaden distance 12 roadType R
+graphLink sourceNode Kilmeaden destNode CarrolsCross distance 10 roadType N
+graphLink sourceNode CarrolsCross destNode Kilmacthomas distance 8 roadType N
+graphLink sourceNode Waterford destNode Mooncoin distance 13 roadType N
+graphLink sourceNode Mooncoin destNode Fiddown distance 6 roadType N
+graphLink sourceNode Fiddown destNode Crehana distance 8 roadType R
+graphLink sourceNode Crehana destNode Clonea distance 9 roadType R
+graphLink sourceNode Clonea destNode MahonBridge distance 12 roadType R
+graphLink sourceNode MahonBridge destNode Dungarvan distance 17 roadType N
+graphLink sourceNode Waterford destNode Dunmore distance 18 roadType R
+graphLink sourceNode Tramore destNode Dunmore distance 16 roadType R
+graphLink sourceNode Waterford destNode Tramore distance 11 roadType R
+graphLink sourceNode Waterford destNode Carriganore distance 4 roadType R
+graphLink sourceNode Carriganore destNode Kilkenny distance 53 roadType M
+graphLink sourceNode Waterford destNode Kilkenny distance 52 roadType M

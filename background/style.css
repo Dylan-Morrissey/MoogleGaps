@@ -4,10 +4,12 @@
 }
 
 .promptTextSize {
-    -fx-font-size: 20px;
+    -fx-font-size: 30px;
     -fx-alignment: center;
 }
 
 .list-cell {
-    -fx-cell-size: 20px;
+    -fx-font-size: 20px;
+    -fx-cell-size: 45px;
+    -fx-alignment: center;
 }
