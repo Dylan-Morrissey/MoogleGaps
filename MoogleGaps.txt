@@ -24,6 +24,77 @@ graphNode name Cashel
 graphNode name Golden
 graphNode name Tipperary
 graphNode name Oola
+graphNode name Emly
+graphNode name Kilmallock
+graphNode name Charleville
+graphNode name Buttevant
+graphNode name Mallow
+graphNode name Galbally
+graphNode name Mitchelstown
+graphNode name Fermoy
+graphNode name Watergrasshill
+graphNode name Cork
+graphNode name Whitecross
+graphNode name Slieverue
+graphNode name NewRoss
+graphNode name Ballinaboola
+graphNode name Wexford
+graphNode name Piltown
+graphNode name Carrick-on-Suir
+graphNode name PassageCross
+graphNode name PassageEast
+graphNode name Faithlegge
+graphNode name Dublin
+graphNode name Whitehall
+graphNode name Drumcondra
+graphNode name Howth
+graphNode name Swords
+graphNode name Galway
+graphNode name Ballyragget
+graphNode name Durrow
+graphNode name Roscrea
+graphNode name Birr
+graphNode name ShannonBridge
+graphNode name Shannon
+graphNode name Clonmel
+graphLink sourceNode Carrick-on-Suir destNode Clonmel distance 21 roadType N
+graphLink sourceNode Clonmel destNode Tipperary distance 41 roadType N
+graphLink sourceNode Limerick destNode Shannon distance 19 roadType N
+graphLink sourceNode Shannon destNode Galway distance 91 roadType M
+graphLink sourceNode Kilkenny destNode Ballyragget distance 17 roadType N
+graphLink sourceNode Ballyragget destNode Durrow distance 8 roadType N
+graphLink sourceNode Durrow destNode Roscrea distance 33 roadType R
+graphLink sourceNode Roscrea destNode Birr distance 20 roadType N
+graphLink sourceNode Birr destNode ShannonBridge distance 28 roadType R
+graphLink sourceNode ShannonBridge destNode Galway distance 74 roadType M
+graphLink sourceNode Dublin destNode Galway distance 210 roadType M
+graphLink sourceNode Whitehall destNode Swords distance 10 roadType M
+graphLink sourceNode Drumcondra destNode Howth distance 16 roadType R
+graphLink sourceNode Dublin destNode Drumcondra distance 3 roadType R
+graphLink sourceNode Drumcondra destNode Whitehall distance 2 roadType N
+graphLink sourceNode Waterford destNode Dublin distance 170 roadType M
+graphLink sourceNode PassageCross destNode Faithlegge distance 4 roadType R
+graphLink sourceNode Waterford destNode PassageCross distance 6 roadType R
+graphLink sourceNode PassageCross destNode PassageEast distance 6 roadType R
+graphLink sourceNode Fiddown destNode Piltown distance 2 roadType R
+graphLink sourceNode Piltown destNode Carrick-on-Suir distance 7 roadType N
+graphLink sourceNode Fiddown destNode Carrick-on-Suir distance 9 roadType N
+graphLink sourceNode Waterford destNode Slieverue distance 7 roadType R
+graphLink sourceNode Slieverue destNode NewRoss distance 17 roadType N
+graphLink sourceNode NewRoss destNode Ballinaboola distance 10 roadType N
+graphLink sourceNode Ballinaboola destNode Wexford distance 27 roadType N
+graphLink sourceNode Fermoy destNode Watergrasshill distance 16 roadType M
+graphLink sourceNode Watergrasshill destNode Whitecross distance 12 roadType R
+graphLink sourceNode Whitecross destNode Cork distance 6 roadType R
+graphLink sourceNode Fermoy destNode Mallow distance 30 roadType N
+graphLink sourceNode Emly destNode Galbally distance 9 roadType R
+graphLink sourceNode Galbally destNode Mitchelstown distance 17 roadType R
+graphLink sourceNode Mitchelstown destNode Mallow distance 35 roadType N
+graphLink sourceNode Oola destNode Emly distance 14 roadType N
+graphLink sourceNode Emly destNode Kilmallock distance 18 roadType R
+graphLink sourceNode Kilmallock destNode Charleville distance 10 roadType R
+graphLink sourceNode Charleville destNode Buttevant distance 15 roadType N
+graphLink sourceNode Buttevant destNode Mallow distance 12 roadType N
 graphLink sourceNode Kilkenny destNode Urlingford distance 29 roadType R
 graphLink sourceNode Urlingford destNode Cashel distance 35 roadType M
 graphLink sourceNode Cashel destNode Golden distance 7 roadType N

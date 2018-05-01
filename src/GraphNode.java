@@ -50,41 +50,6 @@ public class GraphNode {
         GraphNode.roadTypes = roadTypes;
     }
 
-    public static void traverseGraphDepthFirstShowingTotalCost(GraphNode from, List<GraphNode> encountered, int totalCost ){
-        System.out.println(from.name+" (Total cost of reaching node: "+ totalCost +")");
-        if(encountered==null) encountered=new ArrayList<>(); //First node so create new (empty) encountered list
-        encountered.add(from);
-//Could sort adjacency list here based on cost – see next slide for more info!
-        for(GraphLink adjLink : from.graphLinkList)
-            if(!encountered.contains(adjLink.destNode))
-                traverseGraphDepthFirstShowingTotalCost(adjLink.destNode,encountered, totalCost+adjLink.getDistance() );
-    }
-
-    public static List<List<GraphNode>> findAllPathsDepthFirst(GraphNode from, List<GraphNode> encountered, String lookingfor){
-        List<List<GraphNode>> result=null, temp2;
-        if(from.name.equals(lookingfor)) { //Found it
-            List<GraphNode> temp=new ArrayList<>(); //Create new single solution path list
-            temp.add(from); //Add current node to the new single path list
-            result=new ArrayList<>(); //Create new "list of lists" to store path permutations
-            result.add(temp); //Add the new single path list to the path permutations list
-            return result; //Return the path permutations list
-        }
-        if(encountered==null) encountered=new ArrayList<>(); //First node so create new (empty) encountered list
-        encountered.add(from); //Add current node to encountered list
-        for(GraphLink graphLinkList : from.graphLinkList){
-            if(!encountered.contains(graphLinkList)) {
-                temp2=findAllPathsDepthFirst(from,new ArrayList<>(encountered),lookingfor); //Use clone of encountered list
-//for recursive call!
-                if(temp2!=null) { //Result of the recursive call contains one or more paths to the solution node
-                    for(List<GraphNode> x : temp2) //For each partial path list returned
-                        x.add(0,from); //Add the current node to the front of each path list
-                    if(result==null) result=temp2; //If this is the first set of solution paths found use it as the result
-                    else result.addAll(temp2); //Otherwise append them to the previously found paths
-                }
-            }
-        }
-        return result;
-    }
 
     public static CostedPath findShortestPathDijkstra(GraphNode startNode, String lookingfor){
         cp.pathList.clear();
@@ -105,6 +70,7 @@ public class GraphNode {
                             if(e.getDestNode()==currentNode && currentNode.nodeValue-e.distance==n.nodeValue){ //If that edge links to the
 //current node and the difference in node values is the cost of the edge -> found path node!
                                 cp.pathList.add(0, n); //Add the identified path node to the front of the result list
+
                                 roadTypes.add(e.getRoadType().toString());
                                 currentNode=n; //Move the currentNode reference back to the identified path node
                                 foundPrevPathNode=true; //Set the flag to break the outer loop

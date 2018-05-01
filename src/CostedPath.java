@@ -11,7 +11,7 @@ public class CostedPath {
     public List<GraphNode> pathList = new ArrayList<>();
 
 
-    //Retrieve cheapest path by expanding all paths recursively depth-first
+/*    //Retrieve cheapest path by expanding all paths recursively depth-first
     public static <T> CostedPath searchGraphDepthFirstCheapestPath(GraphNode startNode, List<GraphNode> encountered, int totalCost, T lookingfor) {
         if (startNode.getName().equals(lookingfor)) { //Found it - end of path
             CostedPath cp = new CostedPath(); //Create a new CostedPath object
@@ -32,5 +32,5 @@ public class CostedPath {
             }
 //If no paths were found then return null. Otherwise, return the cheapest path (i.e. the one with min pathCost)
         return allPaths.isEmpty() ? null : Collections.min(allPaths, (p1, p2) -> p1.pathCost - p2.pathCost);
-    }
+    }*/
 }

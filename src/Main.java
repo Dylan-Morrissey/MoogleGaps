@@ -38,6 +38,8 @@ public class Main extends Application {
         }
     }
 
+    
+
     public static void main(String[] args) throws FileNotFoundException {
 
         Scanner input = new Scanner(new File("MoogleGaps.txt"));
