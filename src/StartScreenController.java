@@ -41,7 +41,7 @@ public class StartScreenController {
     private Label avgSpeedLabel;
 
     @FXML
-    private ChoiceBox wayPoint;
+    private ChoiceBox<String> wayPoint;
 
     private static ObservableList<String> destinations = FXCollections.observableArrayList(Main.graphNodeNames);
 
@@ -104,6 +104,38 @@ public class StartScreenController {
             avgSpeedLabel.setVisible(true);
             avgSpeedLabel.setText("Average Speed = " + String.valueOf(divSpeed) + "Km/h");
         } else {
+            ArrayList<String> nameOnRoute = new ArrayList<>();
+            ArrayList<GraphNode> nodesOnRoute = new ArrayList<>();
+            for (String start : Main.graphNodeNames) {
+                if (start.equals(startDest.getSelectionModel().getSelectedItem())) {
+                    for (GraphNode thisOne : Main.graphNodes) {
+                        if (thisOne.getName().equals(start)) {
+                            GraphNode.findShortestPathDijkstra(thisOne, wayPoint.getSelectionModel().getSelectedItem());
+                            for (GraphNode h : GraphNode.getCp().pathList) {
+                                nameOnRoute.add(h.getName());
+                                nodesOnRoute.add(h);
+                            }
+                        }
+                    }
+                }
+            }
+            for (String wayPointDest : Main.graphNodeNames) {
+                if (wayPointDest.equals(wayPoint.getSelectionModel().getSelectedItem())) {
+                    for (GraphNode thisOne : Main.graphNodes) {
+                        if (thisOne.getName().equals(wayPointDest)) {
+                            GraphNode.findShortestPathDijkstra(thisOne, endDest.getSelectionModel().getSelectedItem());
+                            for (GraphNode h : GraphNode.getCp().pathList) {
+                                nameOnRoute.add(h.getName());
+                                nodesOnRoute.add(h);
+                            }
+                        }
+                    }
+                }
+            }
+            ObservableList<String> routeList = FXCollections.observableArrayList(nameOnRoute);
+            routeListView.getItems().clear();
+            routeListView.setItems(routeList);
+            System.out.println(nameOnRoute);
 
         }
     }
