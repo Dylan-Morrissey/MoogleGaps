@@ -16,12 +16,10 @@ public class findShortestPathDijkstraTest {
     private GraphNode w = new GraphNode("Test");
     private GraphNode e = new GraphNode("E");
     private GraphNode r = new GraphNode("R");
-    private GraphNode t = new GraphNode("T");
-    private GraphNode y = new GraphNode("Y");
 
     @Before
     public void setUp() {
-        q.connectToNodeUndirected(q, w, 50, 'M');
+        q.connectToNodeUndirected(q, w, 5, 'M');
         w.connectToNodeUndirected(q, e, 1, 'N');
         w.connectToNodeUndirected(e, r, 2, 'R');
         e.connectToNodeUndirected(r, w, 7, 'N');
@@ -80,7 +78,17 @@ public class findShortestPathDijkstraTest {
 
     @Test
     public void testNodesCreated(){
+        ArrayList<String> nameOnRoute = new ArrayList<>();
+        ArrayList<GraphNode> nodesOnRoute = new ArrayList<>();
         GraphNode.findShortestPathDijkstra(q, "Test");
+        for (GraphNode h : GraphNode.getCp().pathList) {
+            nameOnRoute.add(h.getName());
+            nodesOnRoute.add(h);
+        }
+        ArrayList<String> equals = new ArrayList<>();
+        equals.add("Q");
+        equals.add("Test");
+        assertEquals(nameOnRoute,equals);
 
     }
 }
