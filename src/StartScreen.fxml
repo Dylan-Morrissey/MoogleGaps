@@ -21,7 +21,19 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Route Options">
           <items>
-            <MenuItem mnemonicParsing="false" text="Delete" />
+            <MenuItem mnemonicParsing="false" text="WayPoints">
+              <graphic>
+                <ChoiceBox fx:id="wayPoint">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Item 1" />
+                      <String fx:value="Item 2" />
+                      <String fx:value="Item 3" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+              </graphic>
+            </MenuItem>
           </items>
         </Menu>
       </menus>
