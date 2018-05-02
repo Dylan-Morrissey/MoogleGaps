@@ -1,0 +1,13 @@
+.bodybg {
+    -fx-background-image: url("MoogleGapsBackground.jpg");
+    -fx-background-size: 100% 100%;
+}
+
+.promptTextSize {
+    -fx-font-size: 20px;
+    -fx-alignment: center;
+}
+
+.list-cell {
+    -fx-cell-size: 20px;
+}

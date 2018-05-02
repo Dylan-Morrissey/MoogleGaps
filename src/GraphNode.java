@@ -3,15 +3,13 @@ import java.util.List;
 
 public class GraphNode {
 
-    private static CostedPath cp = new CostedPath(); //Create result object for cheapest path
+    private static CostedPath cp = new CostedPath();
 
     private static ArrayList<String> roadTypes = new ArrayList<>();
 
     private String name;
 
     public List<GraphLink> graphLinkList=new ArrayList<>();
-    //public List<GraphNode> adjList=new ArrayList<>();
-    //public List<GraphLink> adjList= new ArrayList<>();
     public List<GraphLink> getGraphLinkList() {
         return graphLinkList;
     }
@@ -52,21 +50,21 @@ public class GraphNode {
 
     public static void findShortestPathDijkstra(GraphNode startNode, String lookingfor){
         cp.pathList.clear();
-        List<GraphNode> encountered=new ArrayList<>(), unencountered=new ArrayList<>(); //Create encountered/unencountered lists
-        startNode.nodeValue=0; //Set the starting node value to zero
-        unencountered.add(startNode); //Add the start node as the only value in the unencountered list to start
+        List<GraphNode> encountered=new ArrayList<>(), unencountered=new ArrayList<>();
+        startNode.nodeValue=0;
+        unencountered.add(startNode);
         GraphNode currentNode;
-        do{ //Loop until unencountered list is empty
-            currentNode=unencountered.remove(0); //Get the first unencountered node (sorted list, so will have lowest value)
-            encountered.add(currentNode); //Record current node in encountered list
-            if(currentNode.getName().equals(lookingfor)){ //Found goal - assemble path list back to start and return it
-                cp.pathList.add(currentNode); //Add the current (goal) node to the result list (only element)
-                cp.pathCost=currentNode.nodeValue; //The total cheapest path cost is the node value of the current/goal node
-                while(currentNode!=startNode) { //While we're not back to the start node...
-                    boolean foundPrevPathNode=false; //Use a flag to identify when the previous path node is identified
-                    for(GraphNode n : encountered) { //For each node in the encountered list...
-                        for(GraphLink e : n.graphLinkList) //For each edge from that node...
-                            if(e.getDestNode()==currentNode && currentNode.nodeValue-e.getDistance()==n.nodeValue){ //If that edge links to the
+        do{
+            currentNode=unencountered.remove(0);
+            encountered.add(currentNode);
+            if(currentNode.getName().equals(lookingfor)){
+                cp.pathList.add(currentNode);
+                cp.pathCost=currentNode.nodeValue;
+                while(currentNode!=startNode) {
+                    boolean foundPrevPathNode=false;
+                    for(GraphNode n : encountered) {
+                        for(GraphLink e : n.graphLinkList)
+                            if(e.getDestNode()==currentNode && currentNode.nodeValue-e.getDistance()==n.nodeValue){
 //current node and the difference in node values is the cost of the edge -> found path node!
                                 cp.pathList.add(0, n); //Add the identified path node to the front of the result list
 

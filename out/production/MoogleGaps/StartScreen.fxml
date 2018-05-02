@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="bodybg" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="StartScreenController">
+  <children>
+    <MenuBar maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#closeProgramme" text="Exit" fx:id="exitButton" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Route Options">
+          <items>
+            <Menu mnemonicParsing="false" text="WayPoints">
+              <graphic>
+                <ChoiceBox fx:id="wayPoint">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Item 1" />
+                      <String fx:value="Item 2" />
+                      <String fx:value="Item 3" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+              </graphic>
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#clearWaypoint" text="Clear Waypoint" fx:id="clearButton" />
+              </items>
+            </Menu>
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <HBox prefHeight="179.0" prefWidth="840.0" AnchorPane.bottomAnchor="360.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="61.0">
+      <children>
+        <VBox prefHeight="240.0" prefWidth="420.0">
+          <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="420.0">
+              <children>
+                <Label text="Start Point : ">
+                  <font>
+                    <Font name="System Bold" size="30.0" fx:id="x1" />
+                  </font>
+                </Label>
+                <ChoiceBox fx:id="startDest" prefWidth="229.0" styleClass="promptTextSize">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Item 1" />
+                      <String fx:value="Item 2" />
+                      <String fx:value="Item 3" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+              </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+              <children>
+                <Label font="$x1" prefWidth="177.0" text="End Point   :" />
+                <ChoiceBox fx:id="endDest" prefWidth="229.0" styleClass="promptTextSize">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Item 1" />
+                      <String fx:value="Item 2" />
+                      <String fx:value="Item 3" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+              </children>
+            </HBox>
+          </children>
+        </VBox>
+        <VBox alignment="TOP_CENTER" prefHeight="179.0" prefWidth="427.0">
+          <children>
+            <Button id="goButton" fx:id="shortestRouteButton" mnemonicParsing="false" onAction="#findShortestRoute" styleClass="promptTextSize" text="Search By Shortest">
+              <stylesheets>
+                <URL value="@../background/style.css" />
+              </stylesheets>
+              <VBox.margin>
+                <Insets top="20.0" />
+              </VBox.margin>
+            </Button>
+            <Button id="quickestRoute" fx:id="quickestRouteButton" mnemonicParsing="false" onAction="#findQuickestRoute" styleClass="promptTextSize" text="Search By Quickest">
+              <stylesheets>
+                <URL value="@../background/style.css" />
+              </stylesheets>
+              <VBox.margin>
+                <Insets top="30.0" />
+              </VBox.margin>
+            </Button>
+          </children>
+        </VBox>
+      </children>
+    </HBox>
+    <HBox layoutX="87.0" layoutY="240.0" prefHeight="346.0" prefWidth="840.0">
+      <children>
+        <ListView fx:id="routeListView" prefHeight="346.0" prefWidth="290.0" styleClass="list-cell">
+          <stylesheets>
+            <URL value="@../background/style.css" />
+          </stylesheets>
+        </ListView>
+        <VBox alignment="CENTER" prefHeight="346.0" prefWidth="260.0" HBox.hgrow="ALWAYS">
+          <children>
+            <Label fx:id="distanceLabel" alignment="TOP_LEFT" prefWidth="526.0" text="Label" textFill="WHITE" visible="false">
+              <font>
+                <Font name="System Bold" size="22.0" fx:id="x2" />
+              </font>
+              <VBox.margin>
+                <Insets top="-26.0" />
+              </VBox.margin>
+            </Label>
+            <Label fx:id="timeLabel" alignment="TOP_LEFT" font="$x2" prefWidth="565.0" text="Label" textFill="WHITE" visible="false">
+              <VBox.margin>
+                <Insets top="15.0" />
+              </VBox.margin>
+            </Label>
+            <Label fx:id="avgSpeedLabel" alignment="TOP_LEFT" font="$x2" prefWidth="594.0" text="Label" textFill="WHITE" visible="false">
+              <VBox.margin>
+                <Insets top="20.0" />
+              </VBox.margin>
+            </Label>
+          </children>
+          <HBox.margin>
+            <Insets left="100.0" />
+          </HBox.margin>
+        </VBox>
+      </children>
+    </HBox>
+  </children>
+  <stylesheets>
+    <URL value="@../background/style.css" />
+  </stylesheets>
+</AnchorPane>
