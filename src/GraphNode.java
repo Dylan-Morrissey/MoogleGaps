@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class GraphNode {
@@ -51,7 +50,7 @@ public class GraphNode {
     }
 
 
-    public static CostedPath findShortestPathDijkstra(GraphNode startNode, String lookingfor){
+    public static void findShortestPathDijkstra(GraphNode startNode, String lookingfor){
         cp.pathList.clear();
         List<GraphNode> encountered=new ArrayList<>(), unencountered=new ArrayList<>(); //Create encountered/unencountered lists
         startNode.nodeValue=0; //Set the starting node value to zero
@@ -67,7 +66,7 @@ public class GraphNode {
                     boolean foundPrevPathNode=false; //Use a flag to identify when the previous path node is identified
                     for(GraphNode n : encountered) { //For each node in the encountered list...
                         for(GraphLink e : n.graphLinkList) //For each edge from that node...
-                            if(e.getDestNode()==currentNode && currentNode.nodeValue-e.distance==n.nodeValue){ //If that edge links to the
+                            if(e.getDestNode()==currentNode && currentNode.nodeValue-e.getDistance()==n.nodeValue){ //If that edge links to the
 //current node and the difference in node values is the cost of the edge -> found path node!
                                 cp.pathList.add(0, n); //Add the identified path node to the front of the result list
 
@@ -85,18 +84,17 @@ public class GraphNode {
                 for(GraphNode n : unencountered) n.nodeValue=Integer.MAX_VALUE;
                 System.out.println(cp.pathCost);
                 System.out.println(cp.pathList.toString());
-                return cp; //The costed (cheapest) path has been assembled, so return it!
+                return; //The costed (cheapest) path has been assembled, so return it!
             }
 //We're not at the goal node yet, so...
             for(GraphLink e : currentNode.graphLinkList) //For each edge/link from the current node...
                 if(!encountered.contains(e.getDestNode())) { //If the node it leads to has not yet been encountered (i.e. processed)
-                    e.getDestNode().nodeValue=Integer.min(e.getDestNode().nodeValue, currentNode.nodeValue+e.distance); //Update the node value at the end
+                    e.getDestNode().nodeValue=Integer.min(e.getDestNode().nodeValue, currentNode.nodeValue+e.getDistance()); //Update the node value at the end
                     //of the edge to the minimum of its current value or the total of the current node's value plus the cost of the edge
                     unencountered.add(e.getDestNode());
                 }
-            Collections.sort(unencountered,(n1,n2)->n1.nodeValue-n2.nodeValue); //Sort in ascending node value order
+            unencountered.sort((n1, n2) -> n1.nodeValue - n2.nodeValue); //Sort in ascending node value order
         }while(!unencountered.isEmpty());
-        return null; //No path found, so return null
     }
 
     public void connectToNodeUndirected(GraphNode sourceNode, GraphNode destNode, int cost, char roadType) {

@@ -21,7 +21,7 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Route Options">
           <items>
-            <MenuItem mnemonicParsing="false" text="WayPoints">
+            <Menu mnemonicParsing="false" text="WayPoints">
               <graphic>
                 <ChoiceBox fx:id="wayPoint">
                   <items>
@@ -33,7 +33,10 @@
                   </items>
                 </ChoiceBox>
               </graphic>
-            </MenuItem>
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#clearWaypoint" text="Clear Waypoint" fx:id="clearButton" />
+              </items>
+            </Menu>
           </items>
         </Menu>
       </menus>

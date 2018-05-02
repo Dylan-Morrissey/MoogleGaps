@@ -14,13 +14,12 @@ public class Main extends Application {
     static ArrayList<GraphNode> graphNodes = new ArrayList<>();
     static ArrayList<String> graphNodeNames = new ArrayList<>();
     static Stage ps;
-    static AnchorPane startScreen;
 
     @Override
     public void start(Stage stage) {
         try {
             ps = stage;
-            startScreen = FXMLLoader.load(getClass().getResource("StartScreen.fxml"));
+            AnchorPane startScreen = FXMLLoader.load(getClass().getResource("StartScreen.fxml"));
 
             ps.setScene(new Scene(startScreen, 1000, 600));
             ps.setTitle("Welcome to MoogleGaps!");
@@ -94,9 +93,6 @@ public class Main extends Application {
         }
         launch(args);
     }
-
-
-
 
     private void closeProgramme() {
         ps.close();

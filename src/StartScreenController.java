@@ -1,7 +1,5 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +22,9 @@ public class StartScreenController {
 
     @FXML
     private MenuItem exitButton;
+
+    @FXML
+    private MenuItem clearButton;
 
     @FXML
     private ListView<String> routeListView;
@@ -75,12 +76,16 @@ public class StartScreenController {
             }
             for (GraphNode k : nodesOnRoute) {
                 for (String j : k.getRoadTypes()) {
-                    if (j.equals("R")) {
-                        speed.add(80);
-                    } else if (j.equals("N")) {
-                        speed.add(100);
-                    } else if (j.equals("M")) {
-                        speed.add(120);
+                    switch (j) {
+                        case "R":
+                            speed.add(80);
+                            break;
+                        case "N":
+                            speed.add(100);
+                            break;
+                        case "M":
+                            speed.add(120);
+                            break;
                     }
                 }
             }
@@ -102,7 +107,7 @@ public class StartScreenController {
             distanceLabel.setVisible(true);
             distanceLabel.setText("Distance = " + String.valueOf(GraphNode.getCp().pathCost) + "km / " + String.valueOf(new DecimalFormat("##.#").format(GraphNode.getCp().pathCost / 1.6) + "Miles"));
             avgSpeedLabel.setVisible(true);
-            avgSpeedLabel.setText("Average Speed = " + String.valueOf(divSpeed) + "Km/h");
+            avgSpeedLabel.setText("Average Speed = " + String.valueOf(new DecimalFormat("##.##").format(divSpeed)) + "Km/h");
         } else {
             ArrayList<String> nameOnRoute = new ArrayList<>();
             ArrayList<GraphNode> nodesOnRoute = new ArrayList<>();
@@ -125,8 +130,10 @@ public class StartScreenController {
                         if (thisOne.getName().equals(wayPointDest)) {
                             GraphNode.findShortestPathDijkstra(thisOne, endDest.getSelectionModel().getSelectedItem());
                             for (GraphNode h : GraphNode.getCp().pathList) {
-                                nameOnRoute.add(h.getName());
-                                nodesOnRoute.add(h);
+                                if (!h.getName().equals(thisOne.getName())) {
+                                    nameOnRoute.add(h.getName());
+                                    nodesOnRoute.add(h);
+                                }
                             }
                         }
                     }
@@ -136,13 +143,51 @@ public class StartScreenController {
             routeListView.getItems().clear();
             routeListView.setItems(routeList);
             System.out.println(nameOnRoute);
-
+            for (GraphNode k : nodesOnRoute) {
+                for (String j : k.getRoadTypes()) {
+                    switch (j) {
+                        case "R":
+                            speed.add(80);
+                            break;
+                        case "N":
+                            speed.add(100);
+                            break;
+                        case "M":
+                            speed.add(120);
+                            break;
+                    }
+                }
+            }
+            nodesOnRoute.clear();
+            float divSpeed = 0;
+            System.out.println(speed);
+            for (int d : speed) {
+                divSpeed = divSpeed + d;
+            }
+            System.out.println(divSpeed);
+            divSpeed = divSpeed / speed.size();
+            System.out.println(divSpeed);
+            float time = GraphNode.getCp().pathCost / divSpeed;
+            System.out.println(GraphNode.getCp().pathCost);
+            System.out.println(divSpeed);
+            System.out.println(time);
+            timeLabel.setVisible(true);
+            timeLabel.setText("Time = " + String.valueOf(new DecimalFormat("##.##").format(time)) + " Hours / " + String.valueOf(new DecimalFormat("##").format(time * 60)) + " Minutes");
+            distanceLabel.setVisible(true);
+            distanceLabel.setText("Distance = " + String.valueOf(GraphNode.getCp().pathCost) + "km / " + String.valueOf(new DecimalFormat("##.#").format(GraphNode.getCp().pathCost / 1.6) + "Miles"));
+            avgSpeedLabel.setVisible(true);
+            avgSpeedLabel.setText("Average Speed = " + String.valueOf(new DecimalFormat("##.##").format(divSpeed)) + "Km/h");
         }
     }
 
     @FXML
     private void findQuickestRoute (ActionEvent event) {
 
+    }
+
+    @FXML
+    private void clearWaypoint (ActionEvent event) {
+        wayPoint.getSelectionModel().clearSelection();
     }
 
     @FXML
