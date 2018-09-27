@@ -16,28 +16,13 @@ For this project I also included FXMl User Friendly Interface front page, which 
 
 ## Tests
 
-I have included 6 JUnit tests in this project. 
-BedTest;
-      This test attempts to add a newly created Bed to a Room in a Property. If said Property and/or Room does not exist, the programme will catch this and give the user an error message and ask them to try again. It also tests that the adding to the list function works by creating multiple properties and rooms and adding them to their specific lists.
-      
-PropertyListTest;
-      This test simply checks that adding to a list works, by creating multiple Property objects and adding them to a Property List. The validation then does a search of certain addresses in the list to ensure the properties have been added.
-      
+I have included 2 JUnit tests in this project.
 
-StudentListTest;
-      This test does the same as the PropertyListTest above, but for Students
-      
-      
-PropertyTest;
-      This test checks the construstor and the getters and setters for creating a Property Object, ensureing proper validation techniques have been implemented.
-      
-      
-RoomTest;
-      This test does the same as the Property Test above, but for Room Objects
-      
-StudentTest;
-      This test does the same as both the PropertyTest and RoomTest above, but for Students.
+findShortestPathDijkstrasTest;
+            This was the most important part of my project to test. It involves creating a few nodes and connecting them together, while giving each "Path" a set "Cost". Dijkstras algorithm then goes through all of the route options to get from one specified start point to another specified end point, at the end selecting the with the lowest "cost".
 
+GraphNodeTest2;
+            This test checked to see that creating graphNodes and linking them together worked. 
 
 ## Built With
 
