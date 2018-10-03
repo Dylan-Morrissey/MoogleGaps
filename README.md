@@ -35,4 +35,4 @@ GraphNodeTest2;
 * **Daniel Collins**
 * **Dylan Morrissey**
 
-This was a Team project completed as part of my studies in the WIT I.o.T Degreee
+This was a Team project completed as part of our Study in WIT. 
